@@ -1,0 +1,27 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+INCLUDE_DIRECTORIES(src/)
+INCLUDE_DIRECTORIES(tests/)
+ADD_SUBDIRECTORY(googletest)
+
+SET(CMAKE_CXX_STANDARD 11)
+
+ADD_EXECUTABLE(rshell
+	src/main.cpp
+)
+
+ADD_EXECUTABLE(test
+
+	tests/test_file_1.cpp
+)
+
+ADD_EXECUTABLE(test2
+	
+	tests/test_file_2.cpp
+)
+
+TARGET_LINK_LIBRARIES(test gtest)
+TARGET_LINK_LIBRARIES(test2 gtest)
+TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disabled_pthreads=ON)
+
+
